@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab id="archiveTab" label="Archive">
+        <group id="archiveGroup" label="Archive By Category" >
+          <button id="archiveButton" onAction="OnArchiveClick" label="Archive" size="large"
+              getImage ="GetImage" screentip="Archive selected mails"/>
+          <dialogBoxLauncher>
+            <button id="group1__btn" onAction="OnConfigClick"/>
+          </dialogBoxLauncher>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+  <contextMenus>
+    <contextMenu idMso="ContextMenuMultipleItems">
+     <button id="MyContextMenuMultipleItems"
+            label="Archive"
+            onAction="OnArchiveClick" getImage="GetImage"/>
+   </contextMenu>
+    <contextMenu idMso="ContextMenuMailItem">
+      <button id="MyContextMenuMailItem"
+             label="Archive"
+             onAction="OnArchiveClick" getImage="GetImage"/>
+    </contextMenu>
+  </contextMenus>
+</customUI>
+

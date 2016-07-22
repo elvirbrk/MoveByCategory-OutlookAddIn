@@ -77,6 +77,11 @@ namespace OutlookArchiveByCategoryAddIn
             }
         }
 
+        protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            return new Ribbon();
+        }
+
         #region VSTO generated code
 
         /// <summary>
