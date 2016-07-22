@@ -62,7 +62,7 @@ namespace OutlookArchiveByCategoryAddIn
 
                         try
                         {
-                            item.Move(folder);
+                            //item.Move(folder);
                         }
                         catch (Exception e)
                         {
