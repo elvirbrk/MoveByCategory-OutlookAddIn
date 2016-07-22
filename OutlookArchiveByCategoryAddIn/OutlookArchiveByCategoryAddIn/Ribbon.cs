@@ -63,7 +63,7 @@ namespace OutlookArchiveByCategoryAddIn
 
         }
 
-        private void OnConfigClick(Office.IRibbonControl control)
+        public void OnConfigClick(Office.IRibbonControl control)
         {
             Config form = new Config();
             form.ShowDialog();

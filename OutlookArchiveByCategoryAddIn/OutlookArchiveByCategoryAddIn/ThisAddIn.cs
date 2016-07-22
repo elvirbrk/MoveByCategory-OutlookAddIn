@@ -62,7 +62,7 @@ namespace OutlookArchiveByCategoryAddIn
 
                         try
                         {
-                            //item.Move(folder);
+                            item.Move(folder);
                         }
                         catch (Exception e)
                         {
@@ -70,7 +70,8 @@ namespace OutlookArchiveByCategoryAddIn
                             continue;
                         }
 
-                        System.Windows.Forms.MessageBox.Show("S:"+item.Sender.Name+" R:"+item.Recipients[1].Name+" SU:"+item.Subject + " RT:" + item.ReceivedTime + " ST:" + item.SentOn + "  Move to: " + folder.FolderPath);
+                        //Debug
+                        //System.Windows.Forms.MessageBox.Show("S:"+item.Sender.Name+" R:"+item.Recipients[1].Name+" SU:"+item.Subject + " RT:" + item.ReceivedTime + " ST:" + item.SentOn + "  Move to: " + folder.FolderPath);
                     }
                     
                 } 

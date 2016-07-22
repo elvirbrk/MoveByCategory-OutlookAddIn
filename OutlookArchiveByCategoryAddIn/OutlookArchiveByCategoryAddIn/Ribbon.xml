@@ -2,12 +2,12 @@
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
   <ribbon>
     <tabs>
-      <tab id="archiveTab" label="Archive">
+      <tab id="archiveTab" label="ARCHIVE">
         <group id="archiveGroup" label="Archive By Category" >
           <button id="archiveButton" onAction="OnArchiveClick" label="Archive" size="large"
               getImage ="GetImage" screentip="Archive selected mails"/>
           <dialogBoxLauncher>
-            <button id="group1__btn" onAction="OnConfigClick"/>
+            <button id="launcherButton" onAction="OnConfigClick"/>
           </dialogBoxLauncher>
         </group>
       </tab>
