@@ -209,7 +209,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
-    <None Include="OutlookArchiveByCategoryAddIn_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -246,7 +245,7 @@
     <ManifestKeyFile>OutlookArchiveByCategoryAddIn_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>6FBDF20C2D5F3F350E0A91927712715170943118</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BC5154600A0F7832A9E63D26F9DFE52D87445CEA</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
