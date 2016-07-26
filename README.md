@@ -1,4 +1,4 @@
-# Outlook AddIn: Archive By Category
+# Outlook AddIn: Move By Category
 Outlook AddIn that moves mails to folders based on assigned category.
 Tested on Outlook 2013, might work on other versions.
 
