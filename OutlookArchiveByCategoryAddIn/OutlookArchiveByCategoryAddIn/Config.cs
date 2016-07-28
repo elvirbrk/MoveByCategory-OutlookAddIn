@@ -96,8 +96,10 @@ namespace OutlookArchiveByCategoryAddIn
         {
             try
             {
-                // Open App.Config of executable
-                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                // Open App.Config of executable                                
+                ExeConfigurationFileMap fm = new ExeConfigurationFileMap();
+                fm.ExeConfigFilename = Globals.ThisAddIn.configPath;
+                Configuration config = ConfigurationManager.OpenMappedExeConfiguration(fm, ConfigurationUserLevel.None);
 
                 if (config.AppSettings.Settings.AllKeys.Contains(cat))
                 {

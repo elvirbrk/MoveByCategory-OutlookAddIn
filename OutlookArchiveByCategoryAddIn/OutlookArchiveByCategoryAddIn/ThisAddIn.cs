@@ -10,9 +10,10 @@ namespace OutlookArchiveByCategoryAddIn
 {
     public partial class ThisAddIn
     {
+        public string configPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData)+ @"\OutlookArchiveByCategoryAddIn\OutlookArchiveByCategoryAddIn.config";
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            
+            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", configPath);
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
