@@ -12,7 +12,7 @@ AddIn will add ribbon tab ARCHIVE.
 ![Alt text](/img/ribbon.png?raw=true "Ribbon")
 
 Click on "Expand" (lower right corner) will open config window with list of all Categories.
-![Alt text](/img/config.png?raw=true "Config")
+![Alt text](/img/config.png "Config")
 
 Dobule click on category to select archive destination.
 
