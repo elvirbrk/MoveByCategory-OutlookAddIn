@@ -39,7 +39,7 @@ namespace OutlookArchiveByCategoryAddIn
 
         public void OnArchiveClick(Office.IRibbonControl control)
         {
-            Globals.ThisAddIn.ArchiveItem();
+            MoveByCategory.GetInstance().ArchiveItem();
         }
 
         public System.Drawing.Bitmap GetImage(Office.IRibbonControl control)

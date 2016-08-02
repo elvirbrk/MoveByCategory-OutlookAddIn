@@ -10,6 +10,7 @@ namespace OutlookArchiveByCategoryAddIn
 {
     public partial class ThisAddIn
     {
+        private MoveByCategory moveByCategory;
         public string configPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData)+ @"\OutlookArchiveByCategoryAddIn\OutlookArchiveByCategoryAddIn.config";
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
@@ -22,62 +23,16 @@ namespace OutlookArchiveByCategoryAddIn
             //    must run when Outlook shuts down, see http://go.microsoft.com/fwlink/?LinkId=506785
         }
 
-        public void ArchiveItem()
+
+
+        protected override object RequestComAddInAutomationService()
         {
-            Outlook.Selection conversations = this.Application.ActiveExplorer().Selection;
+            if (moveByCategory == null)
+                moveByCategory = MoveByCategory.GetInstance();
 
-            foreach (Outlook.ConversationHeader convHeader in conversations.GetSelection(Outlook.OlSelectionContents.olConversationHeaders))
-            {
-                foreach (Outlook.MailItem item in convHeader.GetItems())
-                {
-                    string id="";
-
-                    try
-                    {
-                        id = Config.GetFolderIDByCategoryConfig(item.Categories);
-                    }
-                    catch (Exception e)
-                    {
-                        System.Windows.Forms.MessageBox.Show("Error reading archive folder path for category:" + item.Categories + " from configuration./n/r" + e.ToString());
-                        continue;
-                    }
-
-                    if (string.IsNullOrEmpty(id))
-                    {
-                        System.Windows.Forms.MessageBox.Show("Archive folder for category:"+item.Categories+" not defined.");
-                        continue;
-                    }
-                    else
-                    {
-                        Outlook.MAPIFolder folder;
-
-                        try
-                        {
-                            folder = Application.Session.GetFolderFromID(id);
-                        }
-                        catch (Exception e)
-                        {
-                            System.Windows.Forms.MessageBox.Show("Archive folder with ID:" + id + " does not exist./n/r" + e.ToString());
-                            continue;
-                        }
-
-                        try
-                        {
-                            item.Move(folder);
-                        }
-                        catch (Exception e)
-                        {
-                            System.Windows.Forms.MessageBox.Show("Unable to move item:" + item.Subject + " /n/r" + e.ToString());
-                            continue;
-                        }
-
-                        //Debug
-                        //System.Windows.Forms.MessageBox.Show("S:"+item.Sender.Name+" R:"+item.Recipients[1].Name+" SU:"+item.Subject + " RT:" + item.ReceivedTime + " ST:" + item.SentOn + "  Move to: " + folder.FolderPath);
-                    }
-                    
-                } 
-            }
+            return moveByCategory;
         }
+
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
