@@ -13,11 +13,12 @@ namespace OutlookArchiveByCategoryAddIn
     public interface IMoveByCategory
     {
         void ArchiveItem();
+        void ArchiveMailItem(Outlook.MailItem item);
     }
 
     [ComVisible(true)]
     [ClassInterface(ClassInterfaceType.None)]
-    class MoveByCategory : IMoveByCategory
+    public class MoveByCategory : IMoveByCategory
     {
         private static MoveByCategory instance;
 
@@ -36,53 +37,58 @@ namespace OutlookArchiveByCategoryAddIn
             {
                 foreach (Outlook.MailItem item in convHeader.GetItems())
                 {
-                    string id = "";
-
-                    try
-                    {
-                        id = Config.GetFolderIDByCategoryConfig(item.Categories);
-                    }
-                    catch (Exception e)
-                    {
-                        System.Windows.Forms.MessageBox.Show("Error reading archive folder path for category:" + item.Categories + " from configuration./n/r" + e.ToString());
-                        continue;
-                    }
-
-                    if (string.IsNullOrEmpty(id))
-                    {
-                        System.Windows.Forms.MessageBox.Show("Archive folder for category:" + item.Categories + " not defined.");
-                        continue;
-                    }
-                    else
-                    {
-                        Outlook.MAPIFolder folder;
-
-                        try
-                        {
-                            folder = Globals.ThisAddIn.Application.Session.GetFolderFromID(id);
-                        }
-                        catch (Exception e)
-                        {
-                            System.Windows.Forms.MessageBox.Show("Archive folder with ID:" + id + " does not exist./n/r" + e.ToString());
-                            continue;
-                        }
-
-                        try
-                        {
-                            item.Move(folder);
-                        }
-                        catch (Exception e)
-                        {
-                            System.Windows.Forms.MessageBox.Show("Unable to move item:" + item.Subject + " /n/r" + e.ToString());
-                            continue;
-                        }
-
-                        //Debug
-                        //System.Windows.Forms.MessageBox.Show("S:"+item.Sender.Name+" R:"+item.Recipients[1].Name+" SU:"+item.Subject + " RT:" + item.ReceivedTime + " ST:" + item.SentOn + "  Move to: " + folder.FolderPath);
-                    }
-
+                    ArchiveMailItem(item);
                 }
             }
+        }
+
+        public void ArchiveMailItem(Outlook.MailItem item)
+        {
+            string id = "";
+
+            try
+            {
+                id = Config.GetFolderIDByCategoryConfig(item.Categories);
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show("Error reading archive folder path for category:" + item.Categories + " from configuration./n/r" + e.ToString());
+                return;
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                System.Windows.Forms.MessageBox.Show("Archive folder for category:" + item.Categories + " not defined.");
+                return;
+            }
+            else
+            {
+                Outlook.MAPIFolder folder;
+
+                try
+                {
+                    folder = Globals.ThisAddIn.Application.Session.GetFolderFromID(id);
+                }
+                catch (Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show("Archive folder with ID:" + id + " does not exist./n/r" + e.ToString());
+                    return;
+                }
+
+                try
+                {
+                    item.Move(folder);
+                }
+                catch (Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show("Unable to move item:" + item.Subject + " /n/r" + e.ToString());
+                    return;
+                }
+
+                //Debug
+                //System.Windows.Forms.MessageBox.Show("S:"+item.Sender.Name+" R:"+item.Recipients[1].Name+" SU:"+item.Subject + " RT:" + item.ReceivedTime + " ST:" + item.SentOn + "  Move to: " + folder.FolderPath);
+            }
+
         }
     }
 }
