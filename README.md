@@ -21,6 +21,6 @@ After configuration, select Archive from ribbon or from context menu to move sel
 ![Alt text](/img/context.png?raw=true "Context menu")
 
 # Usage (from Rules)
-Add script from VBA folder to Outlook
+Add script from VBA folder to Outlook.
 Create rule with action "run a script" and select previous script.
 When rule is triggered, mail will be moved to folder based on assigned category.
