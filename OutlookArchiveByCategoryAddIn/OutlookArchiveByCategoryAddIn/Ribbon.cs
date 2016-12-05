@@ -63,6 +63,20 @@ namespace OutlookArchiveByCategoryAddIn
 
         }
 
+        public string GetLabel(Office.IRibbonControl control)
+        {
+            int ver = int.Parse(Globals.ThisAddIn.Application.Version.Substring(0,2));
+
+            if (ver < 15 || ver >= 16)
+            {
+                return "Archive";
+            }
+            else
+            {
+                return "ARCHIVE";
+            }
+        }
+
         public void OnConfigClick(Office.IRibbonControl control)
         {
             Config form = new Config();
