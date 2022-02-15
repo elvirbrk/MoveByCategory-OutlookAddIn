@@ -48,15 +48,15 @@ namespace OutlookArchiveByCategoryAddIn
             {
                 case "MyContextMenuMultipleItems":
                     {
-                        return new System.Drawing.Bitmap(Properties.Resources.icon);
+                        return new System.Drawing.Bitmap(Properties.Resources.icon2);
                     }
                 case "MyContextMenuMailItem":
                     {
-                        return new System.Drawing.Bitmap(Properties.Resources.icon);
+                        return new System.Drawing.Bitmap(Properties.Resources.icon2);
                     }
                 case "archiveButton":
                     {
-                        return new System.Drawing.Bitmap(Properties.Resources.icon);
+                        return new System.Drawing.Bitmap(Properties.Resources.icon2);
                     }
             }
             return null;

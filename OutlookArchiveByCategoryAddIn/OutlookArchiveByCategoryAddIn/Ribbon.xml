@@ -16,12 +16,12 @@
   <contextMenus>
     <contextMenu idMso="ContextMenuMultipleItems">
      <button id="MyContextMenuMultipleItems"
-            label="Archive"
+            label="Categorize"
             onAction="OnArchiveClick" getImage="GetImage"/>
    </contextMenu>
     <contextMenu idMso="ContextMenuMailItem">
       <button id="MyContextMenuMailItem"
-             label="Archive"
+             label="Categorize"
              onAction="OnArchiveClick" getImage="GetImage"/>
     </contextMenu>
   </contextMenus>
