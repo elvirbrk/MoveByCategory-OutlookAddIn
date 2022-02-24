@@ -16,7 +16,7 @@ Click on "Expand" (lower right corner) will open config window with list of all 
 
 Dobule click on category to select archive destination.
 
-After configuration, select Archive from ribbon or from context menu to move selected items to archive folders depending on item category.
+After configuration, select Archive from ribbon or Categorize from context menu to move selected items to archive folders depending on item category.
 
 ![Alt text](/img/context.png?raw=true "Context menu")
 
